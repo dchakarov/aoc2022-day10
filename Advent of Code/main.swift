@@ -12,28 +12,50 @@ func main() {
     
     let lines = inputString.components(separatedBy: "\n")
         .filter { !$0.isEmpty }
+
+    var currentCycle = 0
+    var x = 1
     
-    // Sample algorithm
-    var scoreboard = [String: Int]()
+    var signalStrengths = [Int]()
+    
     lines.forEach { line in
-        let (name, score) = parseLine(line)
-        scoreboard[name] = score
+        let operation = parseLine(line)
+        var cycleDuration = 1
+        var increment = 0
+        switch operation {
+        case .noop: ()
+        case .addx(let int):
+            increment = int
+            cycleDuration = 2
+        }
+        
+        for _ in 0..<cycleDuration {
+            currentCycle += 1
+            if currentCycle % 40 == 20 {
+                signalStrengths.append(currentCycle * x)
+            }
+        }
+        x += increment
     }
-    scoreboard
-        .sorted { lhs, rhs in
-            lhs.value > rhs.value
-        }
-        .forEach { name, score in
-            print("\(name) \(score) pts")
-        }
+    
+    let result = signalStrengths.reduce(0, +)
+    print(result)
 }
 
-func parseLine(_ line: String) -> (name: String, score: Int) {
-    let helper = RegexHelper(pattern: #"([\-\w]*)\s(\d+)"#)
-    let result = helper.parse(line)
-    let name = result[0]
-    let score = Int(result[1])!
-    return (name: name, score: score)
+enum Operation {
+    case noop
+    case addx(Int)
+}
+
+func parseLine(_ line: String) -> Operation {
+    if line.hasPrefix("noop") {
+        return .noop
+    }
+    
+    let result = line.components(separatedBy: .whitespaces)
+    let value = Int(result[1])!
+    
+    return .addx(value)
 }
 
 main()
