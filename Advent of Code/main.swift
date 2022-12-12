@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import RegexHelper
+import Algorithms
 
 func main() {
     let fileUrl = URL(fileURLWithPath: "./aoc-input")
@@ -13,6 +13,11 @@ func main() {
     let lines = inputString.components(separatedBy: "\n")
         .filter { !$0.isEmpty }
 
+//    part1(lines)
+    part2(lines)
+}
+
+func part1(_ lines: [String]) {
     var currentCycle = 0
     var x = 1
     
@@ -40,6 +45,42 @@ func main() {
     
     let result = signalStrengths.reduce(0, +)
     print(result)
+}
+
+func part2(_ lines: [String]) {
+    var currentCycle = 0
+    var x = 1
+    var crtRows = [String]()
+        
+    lines.forEach { line in
+        let operation = parseLine(line)
+        var cycleDuration = 1
+        var increment = 0
+        switch operation {
+        case .noop: ()
+        case .addx(let int):
+            increment = int
+            cycleDuration = 2
+        }
+        
+        for _ in 0..<cycleDuration {
+            currentCycle += 1
+            let position = currentCycle % 40 - 1
+            var crt = "."
+            if position >= x - 1 && position <= x + 1 {
+                crt = "#"
+            }
+//            print("x = \(x); cycle = \(currentCycle); crt = \(crt)")
+            crtRows.append(crt)
+        }
+
+        x += increment
+    }
+    
+    for chunk in crtRows.chunks(ofCount: 40) {
+        print(chunk.joined())
+    }
+//    print(crtRows)
 }
 
 enum Operation {

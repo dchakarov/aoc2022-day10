@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33B140762946A2D40023D917 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 33B140752946A2D40023D917 /* Algorithms */; };
 		552ED31327514D2F00345439 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ED31227514D2F00345439 /* main.swift */; };
 		552ED31E275152F200345439 /* aoc-input in CopyFiles */ = {isa = PBXBuildFile; fileRef = 552ED31C27514E9600345439 /* aoc-input */; };
-		5554BC352756CFA50038DAF8 /* RegexHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5554BC342756CFA50038DAF8 /* RegexHelper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5554BC352756CFA50038DAF8 /* RegexHelper in Frameworks */,
+				33B140762946A2D40023D917 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +85,7 @@
 			);
 			name = "Advent of Code";
 			packageProductDependencies = (
-				5554BC342756CFA50038DAF8 /* RegexHelper */,
+				33B140752946A2D40023D917 /* Algorithms */,
 			);
 			productName = "Advent of Code";
 			productReference = 552ED30F27514D2F00345439 /* Advent of Code */;
@@ -116,7 +116,7 @@
 			);
 			mainGroup = 552ED30627514D2F00345439;
 			packageReferences = (
-				5554BC332756CFA50038DAF8 /* XCRemoteSwiftPackageReference "RegexHelper" */,
+				33B140742946A2D40023D917 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = 552ED31027514D2F00345439 /* Products */;
 			projectDirPath = "";
@@ -296,21 +296,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5554BC332756CFA50038DAF8 /* XCRemoteSwiftPackageReference "RegexHelper" */ = {
+		33B140742946A2D40023D917 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swiftyaf/RegexHelper";
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5554BC342756CFA50038DAF8 /* RegexHelper */ = {
+		33B140752946A2D40023D917 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5554BC332756CFA50038DAF8 /* XCRemoteSwiftPackageReference "RegexHelper" */;
-			productName = RegexHelper;
+			package = 33B140742946A2D40023D917 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
